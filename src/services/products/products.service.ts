@@ -10,7 +10,7 @@ class ProductService {
 
 	public async getProducts(params: Pagination): Promise<GetProductsResponse> {
 		return this.httpService.get(
-			`${this.module}/all?skip=${params.skip}&take=${params.take}`,
+			`${this.module}/all?skip=${params.skip}&take=${params.take}&sort=${'asc'}&search=${params.search}`,
 		);
 	}
 }
