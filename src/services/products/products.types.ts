@@ -1,4 +1,11 @@
-import { Product } from '../../shared/types';
+import { Product, SortTypes } from '../../shared/types';
+
+export type GetProductsParams = {
+	skip: number;
+	take: number;
+	search: string;
+	sort: SortTypes;
+};
 
 export type GetProductsResponse = {
 	data: Product[];

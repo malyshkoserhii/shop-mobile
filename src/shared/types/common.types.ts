@@ -1,5 +1,4 @@
-export type Pagination = {
-	skip: number;
-	take: number;
-	search: string;
-};
+export enum SortTypes {
+	ASC = 'asc',
+	DESC = 'desc',
+}

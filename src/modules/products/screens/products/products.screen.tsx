@@ -1,12 +1,16 @@
+import * as React from 'react';
 import { Text } from 'react-native';
+
+import { useForm } from 'react-hook-form';
 
 import { styles } from './products.styles';
 
 import { Layout } from '../../../../shared/components/layout';
 import { ProductList } from '../../components/products-list';
+import { SortByPriceBlock } from '../../components/sort-by-price-block';
 import { useProductsStore } from '../../../../store/products.store';
 import { useGetProducts } from '../../hooks/get-products.hook';
-import { useForm } from 'react-hook-form';
+
 import { Input } from '../../../../shared/components/input';
 
 type SearchProductForm = {
@@ -26,7 +30,7 @@ export const ProductsScreen = () => {
 
 	const productNameValue = watch('productName');
 
-	const { loading, onEndReached, onRefresh } =
+	const { loading, sort, onEndReached, onRefresh, onAscPres, onDescPres } =
 		useGetProducts(productNameValue);
 
 	return (
@@ -38,6 +42,12 @@ export const ProductsScreen = () => {
 				control={control}
 				defaultValue=""
 				extraInputContainerStyles={styles.input}
+			/>
+
+			<SortByPriceBlock
+				activeSortType={sort}
+				onAscPress={onAscPres}
+				onDescPress={onDescPres}
 			/>
 
 			<ProductList
